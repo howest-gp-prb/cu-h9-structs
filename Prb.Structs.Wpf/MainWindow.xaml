@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prb.Structs.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Coordinates" Height="200" Width="310">
     <Grid>
+        <ListBox x:Name="lstPath" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="10" Width="100"/>
+        <Label Content="Position" HorizontalAlignment="Left" Margin="180, 70,0,0" VerticalAlignment="Top"/>
+        <Button Content="🡹" HorizontalAlignment="Left" Margin="194,26,0,0" VerticalAlignment="Top" Padding="5"/>
+        <Button Content="🡺" HorizontalAlignment="Left" Margin="250,70,0,0" VerticalAlignment="Top" Padding="5"/>
+        <Button Content="🡻" HorizontalAlignment="Left" Margin="194,115,0,0" VerticalAlignment="Top" Padding="5"/>
+        <Button Content="🡸" HorizontalAlignment="Left" Margin="140,70,0,0" VerticalAlignment="top" Padding="5"/>
 
     </Grid>
 </Window>
