@@ -31,39 +31,36 @@ namespace Prb.Structs.Wpf
 
         private void ShowPosition()
         {
-            lblPosition.Content = $"({currentPosition.x}, {currentPosition.y})";
-            lstPath.Items.Insert(0, lblPosition.Content);
+            string position = $"({currentPosition.x}, {currentPosition.y})";
+            lblPosition.Content = position;
+            lstPath.Items.Insert(0, position);
         }
 
         private void BtnUp_Click(object sender, RoutedEventArgs e)
         {
-            int newX = currentPosition.x;
             int newY = currentPosition.y + 1;
-            currentPosition = new Coordinate(newX, newY);
+            currentPosition = new Coordinate(currentPosition.x, newY);
             ShowPosition();
         }
 
         private void BtnDown_Click(object sender, RoutedEventArgs e)
         {
-            int newX = currentPosition.x;
             int newY = currentPosition.y - 1;
-            currentPosition = new Coordinate(newX, newY);
+            currentPosition = new Coordinate(currentPosition.x, newY);
             ShowPosition();
         }
 
         private void BtnLeft_Click(object sender, RoutedEventArgs e)
         {
             int newX = currentPosition.x - 1;
-            int newY = currentPosition.y;
-            currentPosition = new Coordinate(newX, newY);
+            currentPosition = new Coordinate(newX, currentPosition.y);
             ShowPosition();
         }
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
             int newX = currentPosition.x + 1;
-            int newY = currentPosition.y;
-            currentPosition = new Coordinate(newX, newY);
+            currentPosition = new Coordinate(newX, currentPosition.y);
             ShowPosition();
         }
     }
