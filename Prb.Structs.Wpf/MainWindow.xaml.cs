@@ -20,9 +20,63 @@ namespace Prb.Structs.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        Coordinate currentPosition;
+
         public MainWindow()
         {
             InitializeComponent();
+            currentPosition = new Coordinate(4, 7);
+            ShowPosition();
+        }
+
+        private void ShowPosition()
+        {
+            lblPosition.Content = $"({currentPosition.x}, {currentPosition.y})";
+            lstPath.Items.Insert(0, lblPosition.Content);
+        }
+
+        private void BtnUp_Click(object sender, RoutedEventArgs e)
+        {
+            int newX = currentPosition.x;
+            int newY = currentPosition.y + 1;
+            currentPosition = new Coordinate(newX, newY);
+            ShowPosition();
+        }
+
+        private void BtnDown_Click(object sender, RoutedEventArgs e)
+        {
+            int newX = currentPosition.x;
+            int newY = currentPosition.y - 1;
+            currentPosition = new Coordinate(newX, newY);
+            ShowPosition();
+        }
+
+        private void BtnLeft_Click(object sender, RoutedEventArgs e)
+        {
+            int newX = currentPosition.x - 1;
+            int newY = currentPosition.y;
+            currentPosition = new Coordinate(newX, newY);
+            ShowPosition();
+        }
+
+        private void BtnRight_Click(object sender, RoutedEventArgs e)
+        {
+            int newX = currentPosition.x + 1;
+            int newY = currentPosition.y;
+            currentPosition = new Coordinate(newX, newY);
+            ShowPosition();
+        }
+    }
+
+    struct Coordinate
+    {
+        public readonly int x;
+        public readonly int y;
+
+        public Coordinate(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
         }
     }
 }
