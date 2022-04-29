@@ -31,36 +31,31 @@ namespace Prb.Structs.Wpf
 
         private void ShowPosition()
         {
-            string position = $"({currentPosition.x}, {currentPosition.y})";
-            lblPosition.Content = position;
-            lstPath.Items.Insert(0, position);
+            lblPosition.Content = currentPosition;
+            lstPath.Items.Insert(0, currentPosition);
         }
 
         private void BtnUp_Click(object sender, RoutedEventArgs e)
         {
-            int newY = currentPosition.y + 1;
-            currentPosition = new Coordinate(currentPosition.x, newY);
+            currentPosition = currentPosition.MoveUp();
             ShowPosition();
         }
 
         private void BtnDown_Click(object sender, RoutedEventArgs e)
         {
-            int newY = currentPosition.y - 1;
-            currentPosition = new Coordinate(currentPosition.x, newY);
+            currentPosition = currentPosition.MoveDown();
             ShowPosition();
         }
 
         private void BtnLeft_Click(object sender, RoutedEventArgs e)
         {
-            int newX = currentPosition.x - 1;
-            currentPosition = new Coordinate(newX, currentPosition.y);
+            currentPosition = currentPosition.MoveLeft();
             ShowPosition();
         }
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
-            int newX = currentPosition.x + 1;
-            currentPosition = new Coordinate(newX, currentPosition.y);
+            currentPosition = currentPosition.MoveRight();
             ShowPosition();
         }
     }
@@ -74,6 +69,31 @@ namespace Prb.Structs.Wpf
         {
             this.x = x;
             this.y = y;
+        }
+
+        public Coordinate MoveUp()
+        {
+            return new Coordinate(x, y + 1);
+        }
+
+        public Coordinate MoveDown()
+        {
+            return new Coordinate(x, y - 1);
+        }
+
+        public Coordinate MoveLeft()
+        {
+            return new Coordinate(x - 1, y);
+        }
+
+        public Coordinate MoveRight()
+        {
+            return new Coordinate(x + 1, y);
+        }
+
+        public override string ToString()
+        {
+            return  $"({x}, {y})";
         }
     }
 }
